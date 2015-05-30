@@ -10,7 +10,7 @@ cd "$( dirname "$0" )"
 
 ALL_EXIT_CODE=0
 
-# Update from upstream
+# Update from upstream Bootstrap and Bootswatch
 git submodule update --init
 
 # test any package*.js packages we may have, e.g. package.js, package-compat.js

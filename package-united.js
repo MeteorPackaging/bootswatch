@@ -68,5 +68,19 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
+    api.versionsFrom('1.0');
+    api.use('jquery');  // required by Bootstrap's JavaScript
+    // add Bootstrap files
+    api.addFiles([
+        // we bundle all font files, but the client will request only one of them via the CSS @font-face rule
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.eot',   // IE8 or older
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.svg',   // SVG fallback for iOS < 5 - http://caniuse.com/#feat=svg-fonts, http://stackoverflow.com/a/11002874/1269037
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.ttf',   // Android Browers 4.1, 4.3 - http://caniuse.com/#feat=ttf
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.woff',  // Supported by all modern browsers
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.woff2', // Most modern font format
+        'bootstrap/dist/js/bootstrap.js',
+        'init.js'  // initialize popovers and tooltips
+    ], 'client');
+    // Add the theme's CSS file. Themes don't use any JavaScript, even when warranted - https://github.com/thomaspark/bootswatch/issues/329#issuecomment-57189699
     api.addFiles('bootswatch/united/bootstrap.css', 'client');
 });
